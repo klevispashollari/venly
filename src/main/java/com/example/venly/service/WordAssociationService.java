@@ -10,7 +10,6 @@ import com.example.venly.repository.WordAssociationRepository;
 import com.example.venly.repository.model.WordAssociation;
 import com.example.venly.service.dto.RelationStatus;
 import com.example.venly.service.dto.WordAssociationDto;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;

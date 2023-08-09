@@ -39,12 +39,12 @@ public class WordAssociationDto {
         this.relation = relation;
     }
 
-    public RelationStatus getRelationStatus() {
-        return relationStatus;
-    }
-
     public void setRelationStatus(RelationStatus relationStatus) {
         this.relationStatus = relationStatus;
+    }
+
+    public RelationStatus getRelationStatus() {
+        return relationStatus;
     }
 
     public WordAssociationDto() {
@@ -58,4 +58,5 @@ public class WordAssociationDto {
         this.relation = relation;
         this.relationStatus = relationStatus;
     }
+
 }

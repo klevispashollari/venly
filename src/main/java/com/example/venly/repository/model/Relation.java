@@ -12,7 +12,7 @@ public enum Relation {
         return value;
     }
 
-    private Relation(String value) {
+    Relation(String value) {
         this.value = value;
     }
 

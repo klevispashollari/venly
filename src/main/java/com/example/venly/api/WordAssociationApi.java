@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/v1/word-associations")
 public class WordAssociationApi {
 
-    private WordAssociationService wordAssociationService;
+    private final WordAssociationService wordAssociationService;
 
     public WordAssociationApi(WordAssociationService wordAssociationService) {
         this.wordAssociationService = wordAssociationService;
