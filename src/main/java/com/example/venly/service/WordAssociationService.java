@@ -1,6 +1,7 @@
 package com.example.venly.service;
 
 import com.example.venly.repository.WordAssociationRepository;
+import com.example.venly.repository.model.Relation;
 import com.example.venly.service.dto.WordAssociationDto;
 import com.example.venly.service.mapper.WordAssociationMapper;
 import java.util.List;
@@ -20,8 +21,12 @@ public class WordAssociationService {
         return WordAssociationMapper.toDto(wordAssociationRepository.save(WordAssociationMapper.toModel(wordAssociationDto)));
     }
 
-    public List<WordAssociationDto> getAllWordAssociations() {
-        return WordAssociationMapper.toDtoList(wordAssociationRepository.findAll());
+    public List<WordAssociationDto> getAllWordAssociations(String relation) {
+        if(relation.isEmpty()){
+            return WordAssociationMapper.toDtoList(wordAssociationRepository.findAll());
+        }
+        return WordAssociationMapper.toDtoList(wordAssociationRepository.findAllWordAssociationsByRelation(
+                Relation.toRelation(relation)));
     }
 
 }
