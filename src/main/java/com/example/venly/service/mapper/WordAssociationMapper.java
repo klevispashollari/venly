@@ -21,8 +21,8 @@ public class WordAssociationMapper {
 
     public static WordAssociation toModel(WordAssociationDto wordAssociationDto) {
         WordAssociation model = new WordAssociation();
-        model.setFirstWord(wordAssociationDto.getFirstWord());
-        model.setSecondWord(wordAssociationDto.getSecondWord());
+        model.setFirstWord(wordAssociationDto.getFirstWord().trim().toLowerCase());
+        model.setSecondWord(wordAssociationDto.getSecondWord().trim().toLowerCase());
         model.setRelation(wordAssociationDto.getRelation());
         return model;
     }
