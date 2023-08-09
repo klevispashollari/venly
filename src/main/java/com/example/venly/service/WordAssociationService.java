@@ -28,6 +28,12 @@ public class WordAssociationService {
         if(existingWordAssociation.isPresent()) {
             throw new RuntimeException(RELATION_ALREADY_EXISTS_ERROR_MESSAGE);
         }
+        //executed extra call to database for the sake of splitting the implementation of the tasks.
+        //preferably we should do only 1 database call to do both checks at the same time.
+        Optional<WordAssociation> existingReverseWordAssociation = wordAssociationRepository.findWordAssociationByFirstWordAndSecondWord(wordAssociationDto.getSecondWord(), wordAssociationDto.getFirstWord());
+        if(existingReverseWordAssociation.isPresent()) {
+            throw new RuntimeException(RELATION_ALREADY_EXISTS_ERROR_MESSAGE);
+        }
         return toDto(wordAssociationRepository.save(toModel(wordAssociationDto)));
     }
 
