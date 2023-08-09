@@ -1,5 +1,7 @@
 package com.example.venly.repository.model;
 
+import static com.example.venly.utils.Constants.WRONG_RELATION_VALUE_ERROR_MESSAGE;
+
 public enum Relation {
 
     SYNONYM("synonim"), ANTONYM("antonym");
@@ -20,6 +22,6 @@ public enum Relation {
                 return relation;
             }
         }
-        throw new RuntimeException("Wrong value of Relation passed");
+        throw new RuntimeException(WRONG_RELATION_VALUE_ERROR_MESSAGE);
     }
 }
