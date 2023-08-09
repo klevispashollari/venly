@@ -58,4 +58,36 @@ public class WordAssociation {
     public void setRelation(Relation relation) {
         this.relation = relation;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        WordAssociation that = (WordAssociation) o;
+
+        if (getId() != that.getId()) {
+            return false;
+        }
+        if (!getFirstWord().equals(that.getFirstWord())) {
+            return false;
+        }
+        if (!getSecondWord().equals(that.getSecondWord())) {
+            return false;
+        }
+        return getRelation() == that.getRelation();
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (int) (getId() ^ (getId() >>> 32));
+        result = 31 * result + getFirstWord().hashCode();
+        result = 31 * result + getSecondWord().hashCode();
+        result = 31 * result + getRelation().hashCode();
+        return result;
+    }
 }

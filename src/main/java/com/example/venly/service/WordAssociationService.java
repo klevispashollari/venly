@@ -41,7 +41,7 @@ public class WordAssociationService {
 
     public List<WordAssociationDto> getAllWordAssociations(String relation, boolean isReverseIncluded) {
         List<WordAssociationDto> wordAssociations;
-        if(relation.isEmpty()){
+        if(relation == null || relation.isEmpty()){
             wordAssociations =  toDtoList(wordAssociationRepository.findAll());
         } else {
             wordAssociations = toDtoList(wordAssociationRepository.findAllWordAssociationsByRelation(

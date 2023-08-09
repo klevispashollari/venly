@@ -4,7 +4,7 @@ import static com.example.venly.utils.Constants.WRONG_RELATION_VALUE_ERROR_MESSA
 
 public enum Relation {
 
-    SYNONYM("synonim"), ANTONYM("antonym");
+    SYNONYM("synonym"), ANTONYM("antonym");
 
     private final String value;
 
