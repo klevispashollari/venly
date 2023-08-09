@@ -8,9 +8,12 @@ import static com.example.venly.utils.Constants.RELATION_ALREADY_EXISTS_ERROR_ME
 
 import com.example.venly.repository.WordAssociationRepository;
 import com.example.venly.repository.model.WordAssociation;
+import com.example.venly.service.dto.RelationStatus;
 import com.example.venly.service.dto.WordAssociationDto;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -37,12 +40,22 @@ public class WordAssociationService {
         return toDto(wordAssociationRepository.save(toModel(wordAssociationDto)));
     }
 
-    public List<WordAssociationDto> getAllWordAssociations(String relation) {
+    public List<WordAssociationDto> getAllWordAssociations(String relation, boolean isReverseIncluded) {
+        List<WordAssociationDto> wordAssociations;
         if(relation.isEmpty()){
-            return toDtoList(wordAssociationRepository.findAll());
+            wordAssociations =  toDtoList(wordAssociationRepository.findAll());
+        } else {
+            wordAssociations = toDtoList(wordAssociationRepository.findAllWordAssociationsByRelation(
+                    toRelation(relation)));
         }
-        return toDtoList(wordAssociationRepository.findAllWordAssociationsByRelation(
-                toRelation(relation)));
+        if(isReverseIncluded) {
+            List<WordAssociationDto> reverseWordAssociations = wordAssociations.stream()
+                    .map(wordAssociation -> new WordAssociationDto(wordAssociation.getSecondWord(), wordAssociation.getFirstWord(),
+                                wordAssociation.getRelation(), RelationStatus.NO))
+                    .collect(Collectors.toList());
+            wordAssociations.addAll(reverseWordAssociations);
+        }
+        return wordAssociations;
     }
 
 }

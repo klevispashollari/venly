@@ -27,7 +27,7 @@ public class WordAssociationApi {
     }
 
     @GetMapping()
-    public List<WordAssociationDto> getAllWordAssociations(@RequestParam String relation) {
-        return wordAssociationService.getAllWordAssociations(relation);
+    public List<WordAssociationDto> getAllWordAssociations(@RequestParam String relation, @RequestParam boolean isReverseIncluded) {
+        return wordAssociationService.getAllWordAssociations(relation, isReverseIncluded);
     }
 }

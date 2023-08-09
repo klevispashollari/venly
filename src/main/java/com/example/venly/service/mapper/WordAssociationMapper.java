@@ -1,5 +1,6 @@
 package com.example.venly.service.mapper;
 
+import com.example.venly.service.dto.RelationStatus;
 import com.example.venly.service.dto.WordAssociationDto;
 import com.example.venly.repository.model.WordAssociation;
 import java.util.List;
@@ -12,6 +13,7 @@ public class WordAssociationMapper {
         dto.setFirstWord(wordAssociation.getFirstWord());
         dto.setSecondWord(wordAssociation.getSecondWord());
         dto.setRelation(wordAssociation.getRelation());
+        dto.setRelationStatus(RelationStatus.YES);
         return dto;
     }
 

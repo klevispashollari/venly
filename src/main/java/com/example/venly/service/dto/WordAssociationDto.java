@@ -12,6 +12,8 @@ public class WordAssociationDto {
     @Pattern(regexp = "^[a-zA-Z]+$", message = WRONG_WORD_FORMAT_NAME)
     private String secondWord;
     private Relation relation;
+    // couldn't think of a better name :(
+    private RelationStatus relationStatus;
 
     public String getFirstWord() {
         return firstWord;
@@ -35,5 +37,25 @@ public class WordAssociationDto {
 
     public void setRelation(Relation relation) {
         this.relation = relation;
+    }
+
+    public RelationStatus getRelationStatus() {
+        return relationStatus;
+    }
+
+    public void setRelationStatus(RelationStatus relationStatus) {
+        this.relationStatus = relationStatus;
+    }
+
+    public WordAssociationDto() {
+        super();
+    }
+
+    public WordAssociationDto(String firstWord, String secondWord, Relation relation,
+            RelationStatus relationStatus) {
+        this.firstWord = firstWord;
+        this.secondWord = secondWord;
+        this.relation = relation;
+        this.relationStatus = relationStatus;
     }
 }
